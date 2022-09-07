@@ -1,19 +1,22 @@
-interface StackNode<T> {
+import { convertTypeAcquisitionFromJson } from "typescript";
+
+interface Node<T> {
   val: T | null;
-  next: StackNode<T> | null;
+  next: Node<T> | null;
 }
 
-class StackNode<T> implements StackNode<T> {
+class Node<T> implements Node<T> {
   constructor(value: T) {
     (this.val = value ? value : null), (this.next = null);
   }
 }
 
 interface Stack<T> {
-  top: StackNode<T> | null;
-  bottom: StackNode<T> | null;
+  top: Node<T> | null;
+  bottom: Node<T> | null;
   size: number;
 }
+
 class Stack<T> {
   constructor() {
     this.top = null;
@@ -22,7 +25,7 @@ class Stack<T> {
   }
 
   push(val: T) {
-    const node = new StackNode<T>(val);
+    const node = new Node<T>(val);
     if (this.size === 0) {
       this.top = node;
       this.bottom = node;
@@ -38,7 +41,7 @@ class Stack<T> {
 
   pop() {
     if (this.size > 0) {
-      let currentTop = this.top as StackNode<T>;
+      let currentTop = this.top as Node<T>;
       this.top = currentTop.next;
       this.size -= 1;
       currentTop.next = null;
@@ -48,4 +51,41 @@ class Stack<T> {
   }
 }
 
-export { Stack };
+interface Queue<T> {
+  top: T | null;
+  bottom: T | null;
+  array: T[];
+  size: number;
+}
+
+class Queue<T> {
+  constructor() {
+    this.top = null;
+    this.bottom = null;
+    this.array = [];
+    this.size = this.array.length;
+  }
+
+  enqueue(val: T) {
+    this.array.push(val);
+    if (this.array.length === 1) {
+      this.top = this.array[0];
+      this.bottom = this.array[0];
+    } else {
+      this.top = this.array[this.array.length - 1];
+      this.bottom = this.array[0];
+    }
+    this.size += 1;
+  }
+
+  dequeue() {
+    if (this.size > 0) {
+      this.size -= 1;
+      return this.array.shift();
+    }
+    console.log(this.size);
+    return null;
+  }
+}
+
+export { Stack, Queue };
