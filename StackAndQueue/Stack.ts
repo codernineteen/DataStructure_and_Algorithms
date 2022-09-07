@@ -1,11 +1,11 @@
-//Stack is "Last in, First out"
-//we add element to stack memory space using 'push'
-//we remove element from stack memory space using 'pop'
+// Stack is "Last in, First out"
+// we add element to stack memory space using 'push'
+// we remove element from stack memory space using 'pop'
 
-//Stack is not an actual data type, but abstract data structure.
-//You can implement the stack structure as you want
+// Stack is not an actual data type, but abstract data structure.
+// You can implement the stack structure as you want
 
-//The advantage of Stack is that we can prevent tentative bugs with the constraints of stack
+// The advantage of Stack is that we can prevent tentative bugs with the constraints of stack
 
 //Stack class is implemented in lib.ts
 import { Stack } from "./lib";
