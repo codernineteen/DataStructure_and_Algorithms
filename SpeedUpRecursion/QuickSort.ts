@@ -57,7 +57,7 @@ class SortableArray {
 
   quickSelect(target: number, leftIndex: number, rightIndex: number) {
     let pivotIndex = this.partition(leftIndex, rightIndex);
-    console.log(pivotIndex);
+
     if (target < pivotIndex) {
       this.quickSelect(target, leftIndex, pivotIndex - 1);
     } else if (target > pivotIndex) {
@@ -68,9 +68,15 @@ class SortableArray {
   }
 }
 
-const unsortedArray = new SortableArray([1, 3, 7, 8, 2, 10, 4, 9]);
-unsortedArray.quickSort(0, unsortedArray.length - 1);
-
 const unsortedArray2 = new SortableArray([0, 50, 20, 10, 60, 30, 15]);
 const target = unsortedArray2.quickSelect(1, 0, unsortedArray2.length - 1);
-console.log(target);
+
+//Problem 1 : find the biggest multiplication result of three numbers in array.
+const arr = new SortableArray([1, 3, 7, 8, 2, 10, 4, 9]);
+arr.quickSort(0, arr.length - 1);
+
+console.log(
+  arr.array[arr.length - 1] *
+    arr.array[arr.length - 2] *
+    arr.array[arr.length - 3]
+);
